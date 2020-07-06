@@ -1,1 +1,14 @@
-<p>conversation works!</p>
+<p>
+    {{friend | json}}
+</p>
+<p>
+    {{price | currency}}
+</p>
+<p>
+    {{price | number: '1.2-2'}}
+</p>
+<p>
+    {{today | date}} <br>
+    {{today | date: 'medium'}} <br>
+    {{today | date: 'fullDate'}} <br>
+</p>
