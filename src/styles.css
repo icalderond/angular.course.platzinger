@@ -40,3 +40,7 @@
 .generalContent{
     margin-top: 56px;
 }
+
+.disblo{
+    display: block !important;
+}
