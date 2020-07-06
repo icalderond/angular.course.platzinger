@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces/user';
+import { User, State } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ export class UserService {
   constructor() {
     let usuario1: User = {
       nick: 'Eduardo',
+      state: State.OFFLINE,
       age: 24,
       email: 'ed@aoe.aoe',
       friend: true,
@@ -17,6 +18,7 @@ export class UserService {
     };
     let usuario2: User = {
       nick: 'Freddy',
+      state: State.BUSY,
       age: 28,
       email: 'fred@aoe.aoe',
       friend: true,
@@ -24,6 +26,7 @@ export class UserService {
     };
     let usuario3: User = {
       nick: 'Yuliana',
+      state: State.AWAY,
       age: 18,
       email: 'yuli@aoe.aoe',
       friend: true,
@@ -31,6 +34,7 @@ export class UserService {
     };
     let usuario4: User = {
       nick: 'Ricardo',
+      state: State.ONLINE,
       age: 17,
       email: 'rick@aoe.aoe',
       friend: false,
@@ -38,6 +42,7 @@ export class UserService {
     };
     let usuario5: User = {
       nick: 'Marcos',
+      state: State.BUSY,
       age: 30,
       email: 'marcos@aoe.aoe',
       friend: false,
@@ -47,7 +52,7 @@ export class UserService {
     this.friends = [usuario1, usuario2, usuario3, usuario4, usuario5];
   }
 
-  getFriends(){
+  getFriends() {
     return this.friends;
   }
 }
