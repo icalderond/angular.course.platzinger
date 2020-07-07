@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="avatarFrameOnline">
-                    <img [src]="croppedImage" class="avatarImage img-fluid" />
+                    <img [src]="croppedImage || user.avatar || 'assets/img/generic_avatar.png'" class="avatarImage img-fluid" />
                     <!-- <img src="assets/img/generic_avatar.png" class="avatarImage img-fluid" alt=""> -->
                 </div>
                 <hr>
@@ -44,7 +44,7 @@
                     </select>
                 </div>
                 <hr>
-                <a (click)="saveSettings()" href="" class="btn btn-primary btn-block">Guardar</a>
+                <a (click)="saveSettings()" class="btn btn-primary btn-block">Guardar</a>
             </div>
         </div>
     </div>
