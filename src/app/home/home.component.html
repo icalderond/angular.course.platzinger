@@ -10,11 +10,11 @@
                 <div class="col">
                     <b>Eduardo</b>
                     <div>
-                        <span>
-                            Online
-                            <br>
-                            Escribe un mensaje personal
-                        </span>
+                        <span>Online</span>
+                        <br>
+                        <span> un mensaje personal </span>
+                        <br>
+                        <a (click)="logOut()">Logout</a>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
         <div class="disblo marbo5" *ngFor="let user of friends | search:query ; let i = index">
             <span routerLink="/conversation/{{user.uid}}">
                 <img src="/assets/img/logo_live_{{user.state}}.png" class="icon">
-             <b>{{ user.nick }} </b>   - {{ user.subnick || '' }}
+                <b>{{ user.nick }} </b> - {{ user.subnick || '' }}
                 <small>{{user.email}}</small>
             </span>
         </div>
