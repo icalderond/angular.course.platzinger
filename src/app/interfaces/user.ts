@@ -13,4 +13,5 @@ export interface User {
     email: string;
     friend: boolean;
     uid: any;
+    avatar: string;
 }
