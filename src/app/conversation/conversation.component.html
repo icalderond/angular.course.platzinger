@@ -4,20 +4,20 @@
 			<div id="conversationSidebar">
 				<div class="vh30">
 					<div class="avatarFrameonline">
-						<img src="{{'assets/img/generic_avatar.png'}}" class="avatarImage img-fluid">
+						<img src="{{friend.avatar || 'assets/img/generic_avatar.png'}}" class="avatarImage img-fluid">
 					</div>
 				</div>
 				<div class="vh30"></div>
 				<div class="vh25">
 					<div class="avatarFrameonline">
-						<img src="{{'assets/img/generic_avatar.png'}}" class="avatarImage img-fluid">
+						<img src="{{user.avatar||'assets/img/generic_avatar.png'}}" class="avatarImage img-fluid">
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-9">
 			<br />
-			<span class="friendName">Amigo 1</span> (online)
+			<span class="friendName">{{friend.nick}}</span> ({{friend.state}})
 			<hr />
 			<div class="vh55 overscroll pabo10" id="messageArea">
 				<div class="messageGroup" *ngFor="let m of conversation">
@@ -38,7 +38,7 @@
 						<i name="caret-down"></i>
 					</div>
 					<div class="item" (click)="sendZumbido()">
-						<img  src="assets/img/zumbido.png" class="tool">
+						<img src="assets/img/zumbido.png" class="tool">
 					</div>
 
 					<a class="btn btn-primary btn-sm marri10" accept="image/*">Enviar</a>

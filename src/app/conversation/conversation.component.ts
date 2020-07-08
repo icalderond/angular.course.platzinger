@@ -47,6 +47,8 @@ export class ConversationComponent implements OnInit {
         this.friend = data;
         // Actualizar el uid de la conversacion
         const ids = [this.user.uid, this.friend.uid].sort();
+        console.log('me', this.user);
+        console.log('friend', this.friend);
         this.conversationId = ids.join('|');
         this.getConversations();
       }, (err) => {
@@ -69,7 +71,6 @@ export class ConversationComponent implements OnInit {
         this.textMessage = '';
       }).catch((err) => {
         console.log(err);
-
       });
   }
 
@@ -87,7 +88,7 @@ export class ConversationComponent implements OnInit {
               const audio = new Audio('assets/sound/new_message.m4a');
               audio.play();
             }
-          }else if(message == 'zumbido'){
+          } else if (message == 'zumbido') {
             this.doZumbido();
           }
 
