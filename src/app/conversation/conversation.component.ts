@@ -4,6 +4,7 @@ import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
 import { ConversationService } from '../services/conversation.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-conversation',
@@ -16,6 +17,7 @@ export class ConversationComponent implements OnInit {
   user: User;
   conversationId: string;
   textMessage: string;
+  conversation: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,11 +44,10 @@ export class ConversationComponent implements OnInit {
     this.userService.getUserById(this.friendId).valueChanges()
       .subscribe((data: User) => {
         this.friend = data;
-        
-        //Actualizar el uid de la conversacion
+        // Actualizar el uid de la conversacion
         const ids = [this.user.uid, this.friend.uid].sort();
         this.conversationId = ids.join('|');
-
+        this.getConversations();
       }, (err) => {
         console.log(err);
       });
@@ -68,6 +69,32 @@ export class ConversationComponent implements OnInit {
         console.log(err);
 
       });
+  }
+
+  getConversations() {
+    this.conversationService.getConversation(this.conversationId).valueChanges()
+      .subscribe((data) => {
+        this.conversation = data;
+        this.conversation.forEach(message => {
+          if (!message.seen) {
+            message.seen = true;
+            this.conversationService.editConversation(message);
+            const audio = new Audio('assets/sound/new_message.m4a');
+            audio.play();
+          }
+        });
+        console.log(data);
+      }, (err) => {
+        console.log(err);
+      })
+  }
+
+  getUserNickById(uid) {
+    if (uid === this.friend.uid) {
+      return this.friend.nick;
+    } else {
+      return this.user.nick;
+    }
   }
 
 }
